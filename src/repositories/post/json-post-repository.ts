@@ -39,12 +39,3 @@ export class JsonPostRepository implements PostRepository {
     return post;
   }
 }
-
-export const postRepository: PostRepository = new JsonPostRepository();
-
-(async () => {
-  const posts = await postRepository.findById(
-    "99f8add4-7684-4c16-a316-616271db199e",
-  );
-  console.log(posts);
-})();
