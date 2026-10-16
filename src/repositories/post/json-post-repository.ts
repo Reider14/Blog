@@ -14,8 +14,16 @@ const JSON_POSTS_fILE_PATH = resolve(
   "posts.json",
 );
 
+const SIMULATE_WAIT_IN_MS = 0;
+
 // leitura e tratamento dos dados
 export class JsonPostRepository implements PostRepository {
+  private async simulateWait() {
+    if (SIMULATE_WAIT_IN_MS <= 0) return;
+
+    await new Promise((resolve) => setTimeout(resolve, SIMULATE_WAIT_IN_MS));
+  }
+
   // faz a leitura dos dados
   private async readFromDisk(): Promise<PostModel[]> {
     const jsonContent = await readFile(JSON_POSTS_fILE_PATH, "utf-8"); // le os dados
@@ -25,11 +33,13 @@ export class JsonPostRepository implements PostRepository {
   }
 
   async findAll(): Promise<PostModel[]> {
+    await this.simulateWait();
     const posts = await this.readFromDisk();
     return posts;
   }
 
   async findById(id: string): Promise<PostModel> {
+    await this.simulateWait();
     const posts = await this.readFromDisk(); // pega o array
 
     const post = posts.find((post) => post.id === id); // procura o elemento dentro do array
