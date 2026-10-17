@@ -14,7 +14,7 @@ const JSON_POSTS_fILE_PATH = resolve(
   "posts.json",
 );
 
-const SIMULATE_WAIT_IN_MS = 0;
+const SIMULATE_WAIT_IN_MS = 1000;
 
 // leitura e tratamento dos dados
 export class JsonPostRepository implements PostRepository {
