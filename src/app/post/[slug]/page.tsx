@@ -1,6 +1,9 @@
+import { SinglePost } from "@/components/SinglePost";
+import SpeenLoader from "@/components/speenLoader";
 import { findPostBySlugCache } from "@/lib/posts/queries";
 import { Metadata } from "next";
 import { title } from "process";
+import { Suspense } from "react";
 
 type PostSlugPageProps = {
   params: Promise<{ slug: string }>;
@@ -22,11 +25,7 @@ export async function generateMetadata({
 export default async function PostSlugPage({ params }: PostSlugPageProps) {
   const { slug } = await params;
 
-  const post = await findPostBySlugCache(slug);
-
-  return (
-    <div>
-      <p>{post.content}</p>
-    </div>
-  );
+  <Suspense fallback={<SpeenLoader className={"min-h-20 mb-16"} />}>
+    <SinglePost slug={slug} />
+  </Suspense>;
 }

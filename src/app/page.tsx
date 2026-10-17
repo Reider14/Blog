@@ -8,7 +8,7 @@ export default function HomePage() {
     <>
       <PostFeatured />
 
-      <Suspense fallback={<SpeenLoader />}>
+      <Suspense fallback={<SpeenLoader className="min-h-20 mb-16" />}>
         <PostList />
       </Suspense>
     </>
