@@ -1,4 +1,4 @@
-import { findPostBySlugCache } from "@/lib/posts/queries";
+import { findPublicPostBySlugCached } from "@/lib/posts/queries/public";
 import PostHeading from "../postHeading";
 import { PostDate } from "../PostDate";
 import Image from "next/image";
@@ -9,7 +9,7 @@ type SinglePostProps = {
 };
 
 export async function SinglePost({ slug }: SinglePostProps) {
-  const post = await findPostBySlugCache(slug);
+  const post = await findPublicPostBySlugCached(slug);
   return (
     <article className="mb-16">
       <header className="group flex flex-col gap-4 mb-4">

@@ -1,4 +1,4 @@
-import { findAllPublicPostsCache } from "@/lib/posts/queries";
+import { findAllPublicPostsCache } from "@/lib/posts/queries/public";
 import PostCoverImage from "../postCoverImage";
 import PostHeading from "../postHeading";
 import PostSumary from "../PostSumary";
