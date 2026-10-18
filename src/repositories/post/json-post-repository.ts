@@ -2,6 +2,7 @@ import { PostModel } from "@/models/posts/post-model";
 import { PostRepository } from "./post-repository";
 import { resolve } from "path";
 import { readFile } from "node:fs/promises";
+import { SIMULATE_WAIT_IN_MS } from "@/lib/constantes";
 
 const ROOT_DIR = process.cwd(); // pega o caminho
 
@@ -13,8 +14,6 @@ const JSON_POSTS_fILE_PATH = resolve(
   "seed",
   "posts.json",
 );
-
-const SIMULATE_WAIT_IN_MS = 1000;
 
 // leitura e tratamento dos dados
 export class JsonPostRepository implements PostRepository {
