@@ -3,6 +3,8 @@ import { PostList } from "@/components/postList";
 import SpeenLoader from "@/components/speenLoader";
 import { Suspense } from "react";
 
+export const dynamic = "force-static";
+
 export default function HomePage() {
   return (
     <>

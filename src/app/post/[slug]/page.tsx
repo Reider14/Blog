@@ -1,25 +1,14 @@
 import { SinglePost } from "@/components/SinglePost";
 import SpeenLoader from "@/components/speenLoader";
-import {
-  findAllPublicPostsCache,
-  findPostBySlugCache,
-} from "@/lib/posts/queries";
+import { findPostBySlugCache } from "@/lib/posts/queries";
 import { Metadata } from "next";
 import { Suspense } from "react";
+
+export const dynamic = "force-static";
 
 type PostSlugPageProps = {
   params: Promise<{ slug: string }>;
 };
-
-export async function generateStaticParams() {
-  const post = await findAllPublicPostsCache();
-  const params = post.map((post) => {
-    return { slug: post.slug };
-  });
-
-  console.log(params);
-  return params;
-}
 
 export async function generateMetadata({
   params,
